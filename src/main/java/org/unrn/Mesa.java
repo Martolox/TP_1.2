@@ -28,18 +28,7 @@ public class Mesa {
     }
 
     public double cobrar(Tarjeta t, Propina p) {
-        return calcularPropina(p, calcularDescuento(t,
-                calcularTotalPlatos(), calcularTotalBebidas()));
-    }
-
-    public double calcularDescuento(Tarjeta t, double mPl, double mBeb) {
-        double monto = switch (t) {
-            case VISA -> mPl + mBeb - 0.03 * mBeb;
-            case MASTERCARD -> mPl + mBeb - 0.02 * mPl;
-            case COMARCAPLUS -> mPl + mBeb - 0.02 * (mPl + mBeb);
-            case OTRA -> mPl + mBeb;
-        };
-        return monto;
+        return calcularPropina(p, t.aplicarDescuento(calcularTotalPlatos(), calcularTotalBebidas()));
     }
 
     private double calcularTotalPlatos() {
@@ -65,13 +54,6 @@ public class Mesa {
             case CINCO -> t + 0.05 * t;
         };
         return total;
-    }
-
-    public enum Tarjeta {
-        VISA,
-        MASTERCARD,
-        COMARCAPLUS,
-        OTRA
     }
 
     public enum Propina {

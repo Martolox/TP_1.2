@@ -19,33 +19,37 @@ public class Tests {
 
     @Test
     public void sePagaConVisa() {
+        Visa visa = new Visa();
 //        assertEquals(70, mesa.calcularTotalPlatos());
 //        assertEquals(9, mesa.calcularTotalBebidas());
 //        assertEquals(78.73, mesa.calcularDescuento(Mesa.Tarjeta.VISA, 70, 9));
 //        assertEquals(80.3046, mesa.calcularPropina(Mesa.Propina.DOS, 78.73), 0.001);
         assertEquals(80.3046,
-                mesa.cobrar(Mesa.Tarjeta.VISA, Mesa.Propina.DOS),
+                mesa.cobrar(visa, Mesa.Propina.DOS),
                 0.001);
     }
 
     @Test
     public void sePagaConMastercard() {
+        Mastercard mastercard = new Mastercard();
         assertEquals(79.928,
-                mesa.cobrar(Mesa.Tarjeta.MASTERCARD, Mesa.Propina.TRES),
+                mesa.cobrar(mastercard, Mesa.Propina.TRES),
                 0.001);
     }
 
     @Test
     public void sePagaConComarcaPlus() {
+        ComarcaPlus comarcaplus = new ComarcaPlus();
         assertEquals(81.291,
-                mesa.cobrar(Mesa.Tarjeta.COMARCAPLUS, Mesa.Propina.CINCO),
+                mesa.cobrar(comarcaplus, Mesa.Propina.CINCO),
                 0.001);
     }
 
     @Test
     public void seSePagaConOtra() {
+        Otra viedma = new Otra();
         assertEquals(82.95,
-                mesa.cobrar(Mesa.Tarjeta.OTRA, Mesa.Propina.CINCO),
+                mesa.cobrar(viedma, Mesa.Propina.CINCO),
                 0.001);
     }
 }
